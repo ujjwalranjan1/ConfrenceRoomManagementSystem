@@ -1,6 +1,5 @@
 import uuid
 from User import User
-from Role import admin_role,user_role
 
 class Organization:
     def __init__(self,**kwargs):

@@ -1,5 +1,6 @@
 import uuid
 from User import User
+from enums.RoleEnum import RoleEnum
 
 class Organization:
     def __init__(self,**kwargs):
@@ -68,13 +69,13 @@ class Organization:
     
 
     def add_employee(self,user:User):
-        if user.role==admin_role:
+        if user.role==RoleEnum.Admin:
             if user.get_uid not in self.employees["admin"]:
                 self.employees["admin"].add(user.get_uid)
                 self.number_of_employee=self.number_of_employee+1
             else:
                 print(str(user.uid) +" already added")
-        elif user.role==user_role:
+        elif user.role==RoleEnum.User:
             if user.get_uid not in self.employees["admin"]:
                 self.employees["user"].add(user.get_uid)
                 self.number_of_employee=self.number_of_employee+1
@@ -82,20 +83,21 @@ class Organization:
                 print(str(user.uid) +" already added")
     
     def delete_employee(self,user:User):
-        if user.role==admin_role:
+        if user.role==RoleEnum.Admin:
             try:
                 self.employees["admin"].remove(user.get_uid)
                 self.number_of_employee=self.number_of_employee-1
             except ValueError as error:
                 print("No such element found")
-        elif user.role==user_role:
+        elif user.role==RoleEnum.User:
             try:
                 self.employees["user"].remove(user.get_uid)
                 self.number_of_employee=self.number_of_employee-1
             except ValueError as error:
                 print("No such element found")
 
-
+    def get_oid(self):
+        return self.oid
 
         
         

@@ -3,20 +3,29 @@ import uuid
 
 class Room:
     def __init__(self,**kwargs):
+
         self.room_id=uuid.uuid1()
+        try:
+            self.room_name=kwargs["room_name"]
+        except KeyError as error:
+            print("Room Name is required for room")
+
         try:
             self.amenities=kwargs["amenities"]
         except KeyError as error:
             print("Amenities is required for room")
+
         try:
             self.floor=kwargs["floor"]
         except KeyError as error:
             print("floor is required for room")
 
-        try:
-            self.time_slots=kwargs["time_slots"]
-        except KeyError as error:
-            self.time_slots=[i for i in range(24)]
-            print("timestamp is required for room else taking 24 hours time slot")
+        if kwargs["time_slots"]!=None:
+            self.available_time_slots=kwargs["time_slots"]
+        else:
+            self.available_time_slots=[i for i in range(24)]
         
-
+    def get_id(self):
+        return self.room_id
+    def get_name(self):
+        return self.room_name

@@ -28,9 +28,9 @@ class User:
 
         #is it manadatory?
         try:
-            self.role=kwargs["role"]
+            self.role=kwargs["role_enum"]
         except KeyError as error:
-            print("Email is manadatory")
+            print("Role name is manadatory")
         
     def get_first_name(self):
         return self.first_name
@@ -52,19 +52,14 @@ class User:
         except TypeError as error:
             print("Email is not valid")
     
-    def get_role(self):
-        return self.role
+    def get_role_enum(self):
+        return self.get_role_enum
     
-    def set_role(self,role):
-        self.role=role
+    def set_role(self,role_enum):
+        self.role=role_enum
     
     def get_uid(self):
         return self.uid
-
-
-    def has_permission(self, permission):
-        return self.role.has_permission(permission)
-    
 
     
 

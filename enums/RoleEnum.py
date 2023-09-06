@@ -1,4 +1,4 @@
 from enum import Enum
-class RoleEnum:
+class RoleEnum(Enum):
     Admin=0
     User=1

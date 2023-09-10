@@ -9,6 +9,7 @@ class RoomRepository:
         room=Room(**kwargs)
         self.room_by_name[room.get_id()]=room
         self.room_by_id[room.get_name()]=room
+        return room.get_id()
 
     def delete_room_by_id(self,room_id):
         room=self.room_by_id[room_id]

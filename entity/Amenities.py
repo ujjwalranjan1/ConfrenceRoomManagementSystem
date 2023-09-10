@@ -43,6 +43,7 @@ class Amenities:
         return self.phone_count
     def set_phone_count(self,phone_count):
         self.phone_count=phone_count
+        
     def add_room_id(self,room_id):
         self.rooms_id.add(room_id)
     def remove_room_id(self,room_id):

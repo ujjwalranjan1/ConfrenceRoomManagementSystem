@@ -7,5 +7,7 @@ class Permission(Enum):
     WRITEUSER = "Write_USER"
     READORGANIZATION = "Read_Organization"
     WRITEORGANIZATION = "Write_Organization"
+    READFLOOR = "Read_Floor"
+    WRITEFLOOR = "Write_floor"
 
 

@@ -8,9 +8,18 @@ class TimeSlot:
         self.rooms=set()
 
     def add_room(self,room_id):
-        if room_id not in set.union(self.booked_rooms, self.available_rooms):
+        # if room_id not in set.union(self.booked_rooms, self.available_rooms):
+        if room_id not in self.rooms:
             self.rooms.add(room_id)
             self.available_rooms.add(room_id)
+
+    def remove_room(self,room_id):
+        try:
+            self.rooms.remove(room_id)
+        except ValueError as error:
+            print("No such room found")
+        self.booked_rooms.discard(room_id)
+        self.available_rooms.discard(room_id)
 
     def book_room(self,room_id):
         try:

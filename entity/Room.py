@@ -1,5 +1,6 @@
 
 import uuid
+from enums.AmenityEnum import AmenityEnum
 
 class Room:
     def __init__(self,**kwargs):
@@ -29,3 +30,11 @@ class Room:
         return self.room_id
     def get_name(self):
         return self.room_name
+    def get_amenity_type(self):
+        return self.amenities
+    def set_amenity_type(self,amenity_type):
+        self.amenities=amenity_type
+    def get_floor(self):
+        return self.floor
+    def set_floor(self,floor_number):
+        self.floor=floor_number

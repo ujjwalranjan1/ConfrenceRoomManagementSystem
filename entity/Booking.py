@@ -3,7 +3,7 @@ class Booking:
     def __init__(self,room_id,timeslots_id,user_id,organization_id):
         self.booking_id=uuid.uuid1()
         self.room_id=room_id
-        self.timeslots=timeslots_id
+        self.timeslots=set(timeslots_id)
         self.user_id=user_id
         self.organization_id=organization_id
 
@@ -17,3 +17,7 @@ class Booking:
         return self.user_id
     def get_organization_id(self):
         return self.organization_id
+    def delete_time_Slots(self,timeslots):
+        for timeslot in timeslots:
+            self.timeslots.remove(timeslot)
+

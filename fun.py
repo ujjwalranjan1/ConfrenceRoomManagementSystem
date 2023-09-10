@@ -1,3 +1,1 @@
-from controller.UserController import UserController
-u=UserController()
-u.func()
+print("you don't","have access")

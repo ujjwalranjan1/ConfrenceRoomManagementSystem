@@ -7,11 +7,14 @@ from repository.RoomRepository import RoomRepository
 from repository.TimeSlotRepository import TimeSlotRepository
 from repository.UserRepository import UserRepository
 from enums.RoleEnum import RoleEnum
+
 from services.RoomServices import RoomServices
 from services.AmenityService import AmenityService
 from services.FloorServices import FloorService
 from services.RoleService import RoleService
 from services.TimeSlotService import TimeSlotService
+from services.UserService import UserService
+from services.OrganizationService import OrganizationService
 
 amenity_repository=AmenitiesRepository()
 role_repository=RoleRepository()
@@ -27,6 +30,8 @@ amenity_service=AmenityService()
 floor_service=FloorService()
 role_service=RoleService()
 timeslot_service=TimeSlotService()
+user_service=UserService()
+organization_service=OrganizationService()
 
 
 super_user=user_repository.create_user(
@@ -35,5 +40,4 @@ super_user=user_repository.create_user(
     email="contollermanagement@superuser.com",
     organization_id=0,
     role_enum=RoleEnum.Admin
-    
 )

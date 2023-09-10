@@ -1,6 +1,7 @@
 import uuid
 from User import User
 from enums.RoleEnum import RoleEnum
+from config import user_service
 
 class Organization:
     def __init__(self,**kwargs):
@@ -13,7 +14,7 @@ class Organization:
         #employee will have key as admin ,user ,manager
         #value will be set of users
         try:
-            self.name=kwargs["name"]
+            self.name=kwargs["org_name"]
         except KeyError as error:
             print("Organization name is manadatory")
 
@@ -68,19 +69,20 @@ class Organization:
         return set.union(self.employees["admin"],self.employees["user"])
     
 
-    def add_employee(self,user:User):
+    def add_employee(self,user_id):
+        user=user_service.get_user(user_id)
         if user.role==RoleEnum.Admin:
-            if user.get_uid not in self.employees["admin"]:
-                self.employees["admin"].add(user.get_uid)
+            if user_id not in self.employees["admin"]:
+                self.employees["admin"].add(user_id)
                 self.number_of_employee=self.number_of_employee+1
             else:
-                print(str(user.uid) +" already added")
+                print(str(user_id) +" already added")
         elif user.role==RoleEnum.User:
             if user.get_uid not in self.employees["admin"]:
-                self.employees["user"].add(user.get_uid)
+                self.employees["user"].add(user_id)
                 self.number_of_employee=self.number_of_employee+1
             else:
-                print(str(user.uid) +" already added")
+                print(str(user_id) +" already added")
     
     def delete_employee(self,user:User):
         if user.role==RoleEnum.Admin:

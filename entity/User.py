@@ -60,6 +60,11 @@ class User:
     
     def get_uid(self):
         return self.uid
+    
+    def get_organization_id(self):
+        return self.organization_id
+    def set_organization_id(self,org_id):
+        self.organization_id=org_id
 
     
 

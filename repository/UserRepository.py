@@ -4,11 +4,12 @@ class UserRepository:
     def __init__(self):
         self.users_by_users_email={}
         self.users_by_users_id={}
-
+ 
     def create_user(self,**kwargs):
         user=User(**kwargs)
-        self.users_by_users_email[user.get_email]=user
-        self.users_by_users_id[user.get_uid]=user
+        self.users_by_users_email[user.get_email()]=user
+        self.users_by_users_id[user.get_uid()]=user
+        return user.get_uid()
 
     def find_by_user_id(self,user_id):
         return self.users_by_users_id[user_id]

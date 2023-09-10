@@ -26,3 +26,6 @@ class RoomRepository:
     
     def get_room_by_name(self,room_name):
         return self.room_by_name[room_name]
+    
+    def get_all_room(self):
+        return self.room_by_id.values()

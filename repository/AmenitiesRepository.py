@@ -23,7 +23,7 @@ class AmenitiesRepository:
             computer_count =5,
             phone_count =4
         )
-        self.amenities[AmenityEnum.Small]=Amenities(
+        self.amenities[AmenityEnum.Large]=Amenities(
             capacity=100,
             fan_count=15,
             camera_count=10,

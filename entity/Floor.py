@@ -15,3 +15,6 @@ class Floor:
     
     def remove_room(self,room_id):
         self.rooms.remove(room_id)
+        
+    def get_all_rooms(self):
+        return self.rooms

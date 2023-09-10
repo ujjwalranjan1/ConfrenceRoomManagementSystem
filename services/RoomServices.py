@@ -16,7 +16,7 @@ class RoomServices:
                     floor=floor_id,
                 )
                 amenity_service.add_room_associated_with_amenity(room_id,amenity_type)
-                floor_service.add_room_on_floor_by_floor_number(room_id,floor_id)
+                floor_service.add_room_on_floor(room_id,floor_id)
                 timeslots_id=timeslot_service.get_all_timeslots_hour()
                 for timeslot in timeslots_id:
                     timeslot_service.add_room(timeslot,room_id)
@@ -36,7 +36,7 @@ class RoomServices:
             try:
                 room=room_repository.get_room_by_id(room_id)
                 amenity_service.delete_room_associated_with_amenity(room_id,room.get_amenity_type())
-                floor_service.delete_floor_by_floor_number(room_id,room.get_floor())
+                floor_service.remove_room_on_floor(room_id,room.get_floor())
                 timeslots_id=timeslot_service.get_all_timeslots_hour()
                 for timeslot in timeslots_id:
                     timeslot_service.cancel_book_room(timeslot,room_id)
@@ -48,7 +48,27 @@ class RoomServices:
         else:
             print("user with user_id: ",user.get_uid() ,"does not have permission to add floor")
 
+    def delete_room_by_name(self,room_name,user):
+        user_role_enum=user.get_role_enum()
+        user_role=role_service.find_role_by_role_enum(user_role_enum)
+        if user_role.has_permission(Permission.WRITEFLOOR):
+            try:
+                room=room_repository.get_room_by_name(room_name)
+                room_id=room.get_id()
+                amenity_service.delete_room_associated_with_amenity(room_id,room.get_amenity_type())
+                floor_service.remove_room_on_floor(room_id,room.get_floor())
+                timeslots_id=timeslot_service.get_all_timeslots_hour()
+                for timeslot in timeslots_id:
+                    timeslot_service.cancel_book_room(timeslot,room_id)
+                room_repository.delete_room_by_name(room_id)
 
+                print("Room successfully removed")
+            except Exception as error:
+                print(error)
+        else:
+            print("user with user_id: ",user.get_uid() ,"does not have permission to add floor")
 
-
-
+#get all room 
+    def get_all_room(self):
+        return room_repository.get_all_room()
+#changes in room functions will be addedd later

@@ -25,3 +25,6 @@ class OrganizationRepository:
 
     def get_organization_by_name(self,name):
         return self.organization_by_name[name]
+
+    def get_all_organization_id(self):
+        return self.organization_by_id.values()

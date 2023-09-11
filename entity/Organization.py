@@ -6,7 +6,9 @@ from config import user_service
 class Organization:
     def __init__(self,**kwargs):
         self.oid=uuid.uuid1()
+        self.bookings=set()
         self.number_of_employee=0
+        self.booking_hours=0
         self.employees={
             "admin" : set(),
             "user" : set()
@@ -100,6 +102,27 @@ class Organization:
 
     def get_oid(self):
         return self.oid
+    
+    def increase_booking_hour(self,num_hours):
+        self.booking_hours=self.booking_hours+num_hours
+
+    def decrease_booking_hour(self,num_hours):
+        self.booking_hours=self.booking_hours-num_hours
+    
+    def get_booking_hours(self):
+        return self.booking_hours
+    
+    def add_booking(self,booking_id):
+        self.bookings.add(booking_id)
+
+    def get_bookings(self):
+        return self.bookings
+    
+    def delete_booking(self,booking_id):
+        self.bookings.discard(booking_id)
+    
+    def check_booking(self,booking_id):
+        return booking_id in self.bookings
 
         
         

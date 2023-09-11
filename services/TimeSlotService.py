@@ -18,7 +18,18 @@ class TimeSlotService:
     
     def cancel_book_room(self,timeslot_hour,room_id):
         timeslot=timeslot_repository.getTimeSlot(timeslot_hour)
-        timeslot.cancel_booked_room
+        timeslot.cancel_booked_room(room_id)
+    
+    def get_all_room_for_timeslot(self,timeslot_hour):
+        timeslot=timeslot_repository.getTimeSlot(timeslot_hour)
+        return timeslot.get_all_room(timeslot_hour)
+    def get_all_booked_room_for_time_slot(self,timeslot_hour):
+        timeslot=timeslot_repository.getTimeSlot(timeslot_hour)
+        return timeslot.get_all_booked_room(timeslot_hour)
+    def get_all_available_room_for_timeslot(self,timeslot_hour):
+        timeslot=timeslot_repository.getTimeSlot(timeslot_hour)
+        return timeslot.get_all_available_room(timeslot_hour)
+      
 
     def get_all_timeslots_hour(self):
         return timeslot_repository.get_all_time_slots_hours()

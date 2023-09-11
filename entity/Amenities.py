@@ -49,4 +49,4 @@ class Amenities:
     def remove_associated_room_id(self,room_id):
         self.rooms_id.remove(room_id)
     def get_associated_room_ids(self):
-        return list(self.rooms_id)
+        return self.rooms_id

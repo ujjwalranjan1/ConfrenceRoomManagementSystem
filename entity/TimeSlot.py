@@ -1,5 +1,4 @@
 class TimeSlot:
-    _cnt=0
     def __init__(self, hour):
         self.start_hour = hour
         self.end_hour = hour + 1
@@ -34,6 +33,13 @@ class TimeSlot:
             self.available_rooms.add(room_id)
         except ValueError as error:
             print("No such booking exist")
+    
+    def get_all_room(self):
+        return self.rooms
+    def get_all_available_room(self):
+        return self.available_rooms
+    def get_all_booked_room(self):
+        return self.booked_rooms
     
 
 

@@ -6,6 +6,7 @@ class Room:
     def __init__(self,**kwargs):
 
         self.room_id=uuid.uuid1()
+        self.bookings=set()
         try:
             self.room_name=kwargs["room_name"]
         except KeyError as error:
@@ -38,3 +39,17 @@ class Room:
         return self.floor
     def set_floor(self,floor_number):
         self.floor=floor_number
+
+    def add_booking(self,booking_id):
+        self.bookings.add(booking_id)
+
+    def get_bookings(self):
+        return self.bookings
+    
+    def delete_booking(self,booking_id):
+        self.bookings.discard(booking_id)
+    
+    def check_booking(self,booking_id):
+        return booking_id in self.bookings
+
+

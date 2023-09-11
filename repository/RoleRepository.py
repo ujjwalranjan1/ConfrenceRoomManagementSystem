@@ -1,5 +1,5 @@
 from entity.Role import Role
-from entity.Permission import Permission
+from enums.PermissionEnum import Permission
 from enums.RoleEnum import RoleEnum
 
 class RoleRepository:

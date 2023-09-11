@@ -5,6 +5,7 @@ class User:
 
     def __init__(self,**kwargs):
         self.uid=uuid.uuid1()
+        self.bookings=set()
         try:
             self.first_name=kwargs["first_name"]
         except KeyError as error:
@@ -65,6 +66,18 @@ class User:
         return self.organization_id
     def set_organization_id(self,org_id):
         self.organization_id=org_id
+    
+    def add_booking(self,booking_id):
+        self.bookings.add(booking_id)
+
+    def get_bookings(self):
+        return self.bookings
+    
+    def delete_booking(self,booking_id):
+        self.bookings.discard(booking_id)
+    
+    def check_booking(self,booking_id):
+        return booking_id in self.bookings
 
     
 

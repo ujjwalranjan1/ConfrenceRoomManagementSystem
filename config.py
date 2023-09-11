@@ -15,6 +15,7 @@ from services.RoleService import RoleService
 from services.TimeSlotService import TimeSlotService
 from services.UserService import UserService
 from services.OrganizationService import OrganizationService
+from services.BookingService import BookingService
 
 amenity_repository=AmenitiesRepository()
 role_repository=RoleRepository()
@@ -32,6 +33,7 @@ role_service=RoleService()
 timeslot_service=TimeSlotService()
 user_service=UserService()
 organization_service=OrganizationService()
+booking_service=BookingService()
 
 
 super_user=user_repository.create_user(
@@ -41,3 +43,5 @@ super_user=user_repository.create_user(
     organization_id=0,
     role_enum=RoleEnum.Admin
 )
+
+BOOKING_HOUR_LIMIT=30

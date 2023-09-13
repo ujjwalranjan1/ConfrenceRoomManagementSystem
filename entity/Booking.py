@@ -21,3 +21,6 @@ class Booking:
         for timeslot in timeslots:
             self.timeslots.remove(timeslot)
 
+    def __str__(self):
+        return str(self.__dict__)
+

@@ -1,0 +1,2 @@
+from services.BookingService import BookingService
+booking_service=BookingService()

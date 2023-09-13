@@ -6,19 +6,34 @@ class Amenities:
         except KeyError as error:
             print("capacity is manadatory")
     
-        if kwargs["fan_count"] !=None:
+        if "fan_count" in kwargs:
             self.fan_count = kwargs["fan_count"]
-        if kwargs["camera_count"] !=None:
-            self.camera_count = kwargs["camera_count"]
-        if kwargs["screen_count"] !=None:
-            self.screen_count = kwargs["screen_count"]
-        if kwargs["projector_count"] !=None:
-            self.projector_count = kwargs["projector_count"]
-        if kwargs["computer_count"] !=None:
-            self.computer_count = kwargs["computer_count"]
-        if kwargs["phone_count"] !=None:
-            self.phone_count = kwargs["phone_count"]
+        else:
+            self.fan_count=0
 
+        if "camera_count" in kwargs:
+            self.camera_count = kwargs["camera_count"]
+        else:
+            self.camera_count=0
+
+        if "screen_count" in kwargs:
+            self.screen_count = kwargs["screen_count"]
+        else:
+            self.screen_count=0
+        if "projector_count" in kwargs:
+            self.projector_count = kwargs["projector_count"]
+        else:
+            self.projector_count=0
+        if "computer_count" in kwargs:
+            self.computer_count = kwargs["computer_count"]
+        else:
+            self.computer_count=0
+        if "phone_count" in kwargs:
+            self.phone_count = kwargs["phone_count"]
+        else :
+            self.phone_count=0
+    def get_capacity(self):
+        return self.capacity
     def get_fan_count(self):
         return self.fan_count
     def set_fan_count(self,fan_count):
@@ -50,3 +65,6 @@ class Amenities:
         self.rooms_id.remove(room_id)
     def get_associated_room_ids(self):
         return self.rooms_id
+    
+    def __str__(self):
+        return str(self.__dict__)

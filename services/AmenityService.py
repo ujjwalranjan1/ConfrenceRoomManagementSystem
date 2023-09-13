@@ -1,6 +1,6 @@
 from entity.Amenities import Amenities
 from enums.AmenityEnum import AmenityEnum
-from config import amenity_repository
+from beans.AmenityRepositoryBean import amenity_repository
 
 class AmenityService:
 

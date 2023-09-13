@@ -1,0 +1,2 @@
+from repository.FloorRepository import FloorRepository
+floor_repository=FloorRepository()

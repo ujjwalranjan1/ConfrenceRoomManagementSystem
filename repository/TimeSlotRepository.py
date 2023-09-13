@@ -11,5 +11,7 @@ class TimeSlotRepository:
         return self.timeslots[start_hour]
     
     def get_all_time_slots_hours(self):
-        timeslot_ids=[]
         return self.timeslots_hours
+    
+    def get_all_timeslot(self):
+        return self.timeslots

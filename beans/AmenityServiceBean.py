@@ -1,0 +1,2 @@
+from services.AmenityService import AmenityService
+amenity_service=AmenityService()

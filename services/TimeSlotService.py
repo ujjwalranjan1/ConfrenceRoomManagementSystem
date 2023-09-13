@@ -1,5 +1,5 @@
 from entity.TimeSlot import TimeSlot
-from config import timeslot_repository
+from beans.TimeSlotRepositoryBean import timeslot_repository
 
 class TimeSlotService:
 
@@ -10,6 +10,18 @@ class TimeSlotService:
     def remove_room(self,timeslot_hour,room_id):
         timeslot=timeslot_repository.getTimeSlot(timeslot_hour)
         timeslot.remove_room(room_id)
+
+    def add_room_all_time_slot(self,room_id):
+        timeslots=timeslot_repository.get_all_timeslot()
+        for timeslot in timeslots:
+            timeslot.add_room(room_id)
+    
+    def remove_room_all_time_slot(self,room_id):
+        timeslots=timeslot_repository.get_all_timeslot()
+        for timeslot in timeslots:
+            timeslot.remove_room(room_id)
+
+
 
 
     def book_room(self,timeslot_hour,room_id):

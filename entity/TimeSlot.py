@@ -40,6 +40,8 @@ class TimeSlot:
         return self.available_rooms
     def get_all_booked_room(self):
         return self.booked_rooms
+    def __str__(self):
+        return str(self.__dict__)
     
 
 

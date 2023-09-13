@@ -1,0 +1,2 @@
+from repository.BookingRepository import BookingRepository
+booking_repository=BookingRepository()

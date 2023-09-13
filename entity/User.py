@@ -54,12 +54,12 @@ class User:
             print("Email is not valid")
     
     def get_role_enum(self):
-        return self.get_role_enum
+        return self.role
     
     def set_role(self,role_enum):
         self.role=role_enum
     
-    def get_uid(self):
+    def get_uid(self):  
         return self.uid
     
     def get_organization_id(self):
@@ -79,7 +79,8 @@ class User:
     def check_booking(self,booking_id):
         return booking_id in self.bookings
 
-    
+    def __str__(self):
+        return str(self.__dict__)
 
         
 def validate_email(email):  

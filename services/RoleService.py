@@ -1,6 +1,5 @@
 from entity.Role import Role
-from enums import RoleEnum
-from config import role_repository
+from beans.RoleRepositoryBean import role_repository
 
 class RoleService:
 

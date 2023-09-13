@@ -21,10 +21,16 @@ class OrganizationRepository:
         self.organization_by_name.pop(name)
 
     def get_organization_by_id(self,oid):
-        return self.organization_by_id[oid]
+        try:
+            return self.organization_by_id[oid]
+        except:
+            print("no organization exist")
 
     def get_organization_by_name(self,name):
-        return self.organization_by_name[name]
+        try:
+            return self.organization_by_name[name]
+        except:
+            print("no such organization exist")
 
-    def get_all_organization_id(self):
+    def get_all_organization(self):
         return self.organization_by_id.values()

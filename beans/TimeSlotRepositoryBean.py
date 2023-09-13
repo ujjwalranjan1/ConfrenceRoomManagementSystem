@@ -1,0 +1,2 @@
+from repository.TimeSlotRepository import TimeSlotRepository
+timeslot_repository=TimeSlotRepository()

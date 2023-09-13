@@ -11,7 +11,10 @@ class FloorRepository:
         self.floor_by_floor_number[number]=floor
 
     def find_floor_by_number(self,number):
-        return self.floor_by_floor_number[number]
+        try:
+            return self.floor_by_floor_number[number]
+        except:
+            print("floor_does not exist")
     
     
     def delete_floor_by_number(self,number):

@@ -1,0 +1,2 @@
+from repository.OrganizationRepository import OrganizationRepository
+organization_repository=OrganizationRepository()

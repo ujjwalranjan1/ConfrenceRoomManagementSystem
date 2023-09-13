@@ -1,0 +1,2 @@
+from services.OrganizationService import OrganizationService
+organization_service=OrganizationService()

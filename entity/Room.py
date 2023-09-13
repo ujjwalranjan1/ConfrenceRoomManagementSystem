@@ -4,7 +4,6 @@ from enums.AmenityEnum import AmenityEnum
 
 class Room:
     def __init__(self,**kwargs):
-
         self.room_id=uuid.uuid1()
         self.bookings=set()
         try:
@@ -22,7 +21,7 @@ class Room:
         except KeyError as error:
             print("floor is required for room")
 
-        if kwargs["time_slots"]!=None:
+        if "time_slots" in kwargs:
             self.available_time_slots=kwargs["time_slots"]
         else:
             self.available_time_slots=[i for i in range(24)]
@@ -51,5 +50,10 @@ class Room:
     
     def check_booking(self,booking_id):
         return booking_id in self.bookings
+    
+    def get_available_timeslots(self):
+        return self.available_time_slots
+    def __str__(self):
+        return str(self.__dict__)
 
 

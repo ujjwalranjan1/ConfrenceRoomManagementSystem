@@ -1,19 +1,24 @@
 from entity.Booking import Booking
+from beans.BookingRepositoryBean import booking_repository
+from enums.PermissionEnum import Permission
+from entity.User import User
 
 class BookingService:
-    def book_room(room_id,start_time,end_time,user_id):
-        user_role_enum=user.get_role_enum()
-        user_role=role_service.find_role_by_role_enum(user_role_enum)
-        if user_role.has_permission(Permission.WRITEFLOOR):
-            try:
-                floor=floor_repository.find_floor_by_number(floor_number)
-                rooms=floor.get_all_rooms()
-                for id in rooms:
-                    room_service.delete_room_by_id(id,user)
-                floor_repository.delete_floor_by_number(floor_number)
-            except Exception as error:
-                print(error)
-        else:
-            print("user with user_id: ",user.get_uid() ,"does not have permission to delete floor")
+
+    def book_room(self,room_id,timeslots_hour,user_id,org_id):
+        # print(timeslots_hour)
+        booking_id=booking_repository.create_booking(user_id,org_id,timeslots_hour,room_id)
+        return booking_id
+    
+    def get_booking_by_id(self,booking_id):
+         booking=booking_repository.get_booking_by_booking_id(booking_id)
+         return booking
+
+
+    def delete_booking(self,booking_id):
+       booking_repository.delete_booking(booking_id)
+
+
+
 
     

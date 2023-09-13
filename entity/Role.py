@@ -1,4 +1,4 @@
-from Permission import Permission
+from enums.PermissionEnum import Permission
 
 class Role:
     def __init__(self, name, permissions):
@@ -17,5 +17,10 @@ class Role:
             self.users_id.remove(user_id)
         except ValueError as error:
             print("No such user exist having this role")
+
+    def get_all_user_id(self):
+        return self.users_id
+    def __str__(self):
+        return str(self.__dict__)
 
 

@@ -1,7 +1,6 @@
 import uuid
-from User import User
+from entity.User import User
 from enums.RoleEnum import RoleEnum
-from config import user_service
 
 class Organization:
     def __init__(self,**kwargs):
@@ -21,10 +20,10 @@ class Organization:
             print("Organization name is manadatory")
 
         #contacts is not manadatory
-        if kwargs["contacts"]!=None:
+        if "contacts" in kwargs:
             self.contacts=kwargs["contacts"]
         
-        if kwargs["locations"]!=None:
+        if "locations" in kwargs:
             self.locations=kwargs["locations"]
         
     def get_name(self):
@@ -71,31 +70,30 @@ class Organization:
         return set.union(self.employees["admin"],self.employees["user"])
     
 
-    def add_employee(self,user_id):
-        user=user_service.get_user(user_id)
-        if user.role==RoleEnum.Admin:
+    def add_employee(self,user_id,role):
+        if role==RoleEnum.Admin:
             if user_id not in self.employees["admin"]:
                 self.employees["admin"].add(user_id)
                 self.number_of_employee=self.number_of_employee+1
             else:
                 print(str(user_id) +" already added")
-        elif user.role==RoleEnum.User:
-            if user.get_uid not in self.employees["admin"]:
+        elif role==RoleEnum.User:
+            if user_id not in self.employees["admin"]:
                 self.employees["user"].add(user_id)
                 self.number_of_employee=self.number_of_employee+1
             else:
                 print(str(user_id) +" already added")
     
-    def delete_employee(self,user:User):
-        if user.role==RoleEnum.Admin:
+    def delete_employee(self,user_id,role):
+        if role==RoleEnum.Admin:
             try:
-                self.employees["admin"].remove(user.get_uid)
+                self.employees["admin"].remove(user_id)
                 self.number_of_employee=self.number_of_employee-1
             except ValueError as error:
                 print("No such element found")
-        elif user.role==RoleEnum.User:
+        elif role==RoleEnum.User:
             try:
-                self.employees["user"].remove(user.get_uid)
+                self.employees["user"].remove(user_id)
                 self.number_of_employee=self.number_of_employee-1
             except ValueError as error:
                 print("No such element found")
@@ -123,6 +121,9 @@ class Organization:
     
     def check_booking(self,booking_id):
         return booking_id in self.bookings
+    
+    def __str__(self):
+        return str(self.__dict__)
 
         
         

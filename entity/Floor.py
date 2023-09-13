@@ -18,3 +18,5 @@ class Floor:
         
     def get_all_rooms(self):
         return self.rooms
+    def __str__(self):
+        return str(self.__dict__)

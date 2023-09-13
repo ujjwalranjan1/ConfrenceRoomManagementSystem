@@ -1,1 +1,0 @@
-print("you don't","have access")

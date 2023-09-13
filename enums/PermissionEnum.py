@@ -9,5 +9,7 @@ class Permission(Enum):
     WRITEORGANIZATION = "Write_Organization"
     READFLOOR = "Read_Floor"
     WRITEFLOOR = "Write_floor"
+    WRITEBOOKING = "Write_booking"
+    READBOOKING ="Read_Booking"
 
 

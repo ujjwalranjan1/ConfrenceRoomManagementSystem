@@ -20,6 +20,9 @@ from beans.AmenityRepositoryBean import amenity_repository
 from enums.RoleEnum import RoleEnum
 from enums.AmenityEnum import AmenityEnum
 
+
+from beans.UserServiceBean import user_service
+
 organization_controller.create_organization(
     "samsung"
 )
@@ -78,33 +81,45 @@ booking_controller.book_room(
     5,
     "ujjwal@gmail.com"
 )
+# user=user_service.get_user_by_email("ujjwal@gmail.com")
+# print(user)
+bookings=booking_controller.get_bookings_by_organization("samsung")
+if bookings!=None:
+    for booking in bookings:
+        print(booking)
 
-user_controller.delete_user(
-     "ujjwal@gmail.com"
-)
+# rooms=room_controller.get_all_available_room_for_timeslot(2,5)
+# # for room in rooms:
+# #     print(room)
+# rooms=room_controller.get_all_available_room_with_timeslots_and_amenity(2,5,AmenityEnum.Small)
+# for room in rooms:
+#     print(room)
+# user_controller.delete_user(
+#      "ujjwal@gmail.com"
+# )
 
-for org in organization_repository.get_all_organization():
-    print(org)
-    print("\n\n")
+# for org in organization_repository.get_all_organization():
+#     print(org)
+#     print("\n\n")
 
-print(role_repository.get_role(RoleEnum.Admin))
-print("\n\n")
-print(role_repository.get_role(RoleEnum.User))
-print("\n\n")
+# print(role_repository.get_role(RoleEnum.Admin))
+# print("\n\n")
+# print(role_repository.get_role(RoleEnum.User))
+# print("\n\n")
 
-for user in user_repository.get_all_users():
-    print(user)
-    print("\n\n")
+# for user in user_repository.get_all_users():
+#     print(user)
+#     print("\n\n")
 
-for floor in floor_repository.get_all_floor():
-    print(floor)
-    print("\n\n")
+# for floor in floor_repository.get_all_floor():
+#     print(floor)
+#     print("\n\n")
 
-for room in room_repository.get_all_room():
-    print(room)
-    print("\n\n")
+# for room in room_repository.get_all_room():
+#     print(room)
+#     print("\n\n")
 
-timeslots=timeslot_repository.get_all_timeslot()
-for timeslot_hour in range(2,5):
-    print(timeslots[timeslot_hour])
-    print("\n\n")
+# timeslots=timeslot_repository.get_all_timeslot()
+# for timeslot_hour in range(2,5):
+#     print(timeslots[timeslot_hour])
+#     print("\n\n")

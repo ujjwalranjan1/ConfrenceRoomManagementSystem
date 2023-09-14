@@ -1,5 +1,6 @@
 import re
 import uuid
+import copy
 
 class User:
 
@@ -71,7 +72,7 @@ class User:
         self.bookings.add(booking_id)
 
     def get_bookings(self):
-        return self.bookings
+        return copy.deepcopy(self.bookings)
     
     def delete_booking(self,booking_id):
         self.bookings.discard(booking_id)

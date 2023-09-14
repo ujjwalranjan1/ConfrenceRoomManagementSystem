@@ -45,8 +45,8 @@ class UserService:
         if user!=None:
             user.check_booking(booking_id)
 
-    def check_permission(self,user_id,permission_type):
-        user=user_repository.find_by_user_id(user_id)
+    def check_permission(self,user_email,permission_type):
+        user=user_repository.find_by_email(user_email)
         if user!=None:
             role_type=user.get_role_enum()
             role_service.check_permission(role_type,permission_type)

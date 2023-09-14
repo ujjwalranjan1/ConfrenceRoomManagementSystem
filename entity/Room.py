@@ -24,7 +24,7 @@ class Room:
         if "time_slots" in kwargs:
             self.available_time_slots=kwargs["time_slots"]
         else:
-            self.available_time_slots=[i for i in range(24)]
+            self.available_time_slots=set([i for i in range(24)])
         
     def get_id(self):
         return self.room_id
@@ -53,6 +53,12 @@ class Room:
     
     def get_available_timeslots(self):
         return self.available_time_slots
+    def add_available_hour(self,hours):
+        for hour in hours:
+            self.available_time_slots.add(hour)
+    def delete_available_hour(self,hours):
+        for hour in hours:
+            self.available_time_slots.discard(hour)
     def __str__(self):
         return str(self.__dict__)
 

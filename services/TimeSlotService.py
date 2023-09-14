@@ -35,12 +35,14 @@ class TimeSlotService:
     def get_all_room_for_timeslot(self,timeslot_hour):
         timeslot=timeslot_repository.getTimeSlot(timeslot_hour)
         return timeslot.get_all_room(timeslot_hour)
+    
     def get_all_booked_room_for_time_slot(self,timeslot_hour):
         timeslot=timeslot_repository.getTimeSlot(timeslot_hour)
         return timeslot.get_all_booked_room(timeslot_hour)
+    
     def get_all_available_room_for_timeslot(self,timeslot_hour):
         timeslot=timeslot_repository.getTimeSlot(timeslot_hour)
-        return timeslot.get_all_available_room(timeslot_hour)
+        return timeslot.get_all_available_room()
       
 
     def get_all_timeslots_hour(self):
